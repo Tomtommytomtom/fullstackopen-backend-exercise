@@ -27,6 +27,11 @@ let persons = [
     "name": "Mary Poppendieck", 
     "number": "39-23-6423122",
     "id": 4
+    },
+    { 
+    "name": "Mary Poppendieck", 
+    "number": "39-23-6423122",
+    "id": 5
     }
 ]
 
@@ -52,7 +57,7 @@ app.get('/api/persons/:id', (req, res) => {
     }
 })
 
-app.delete('a/pi/persons/:id', (req, res) => {
+app.delete('api/persons/:id', (req, res) => {
     const id = Number(req.params.id)
     const person = persons.find(person => person.id === id)
     res.status(204).end()
@@ -88,8 +93,6 @@ app.post('/api/persons', (req, res) => {
 const alrdyIncludes = name => {
     return persons.map(person => person.name).includes(name)
 }
-  
-
 
 const PORT = process.env.PORT || 3001
     app.listen(PORT, () => {
