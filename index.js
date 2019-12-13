@@ -1,14 +1,11 @@
 const express = require("express")
 const app = express()
 const bodyParser = require('body-parser')
-const morgan = require('morgan')
+const cors = require('cors')
 
+app.use(cors())
 app.use(bodyParser.json())
 
-morgan.token("body",(req, res) =>{
-    return JSON.stringify(req.body)
-})
-app.use(morgan(':method :url :status :res[content-length] - :response-time ms :body'))
 
 let persons = [
     { 
@@ -23,7 +20,7 @@ let persons = [
     },
     { 
     "name": "Dan Abramov", 
-    "number": "12-43-234345",
+    "number": "12-43-234345",   
     "id": 3
     },
     { 
@@ -93,7 +90,8 @@ const alrdyIncludes = name => {
 }
   
 
-const PORT = 3001
+
+const PORT = process.env.PORT || 3001
     app.listen(PORT, () => {
         console.log(`server running on ${PORT} port`)
 })
