@@ -20,6 +20,7 @@ const personSchema = new mongoose.Schema({
 
 const Person = mongoose.model('Person', personSchema)
 
+
 if(consoleArgs.length == 3){
     Person.find({}).then(result => {
         result.forEach(person => {
